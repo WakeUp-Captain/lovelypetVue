@@ -1,34 +1,15 @@
 <template>
-<<<<<<< HEAD
-	<div id="app">
-		<router-view />
-	</div>
-</template>
-
-<<<<<<< HEAD
 <!-- 注意这里为共通样式，不能加scoped -->
-=======
-=======
-  <div id="app">
-    
+  <div id="app">   
     <router-view/>
   </div>
 </template>
-
-
->>>>>>> 0b40069007c974be5bfac0c5f44e8ebed25cdf69
 <script>
-
-
 export default {
   name:"app",
 }
 </script>
-
-
->>>>>>> origin/master
 <style>
-<<<<<<< HEAD
 	/*这里的内容，就是静态工程中的 reset.css*/
 	html,body,div,span,h1,h2,h3,h4,h5,h6,ul,ol,li,p {
 		margin: 0;
@@ -47,7 +28,3 @@ export default {
 		text-decoration: none;
 	}
 </style>
-=======
-
-</style>
->>>>>>> 0b40069007c974be5bfac0c5f44e8ebed25cdf69
