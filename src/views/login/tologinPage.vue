@@ -1,13 +1,5 @@
 <template>
-  <div id="app" class="loginbox">
-    <el-container style="height=100%;" direction="vertical">
-      <el-header>
-        当猫爱上狗
-        <el-button type="success" @click="dialogFormVisible = true">登录</el-button>
-      </el-header>
-      <el-main>
-        <div class="loginbody">
-          <el-dialog class="loginDialog" title="登录" :visible.sync="dialogFormVisible" :before-close="handleClose">
+  <div  class="loginbox">
             <el-form ref="loginFormRef" :model="login" :rules="loginFormRules" label-width="100px">
               <el-form-item label="手机号:" prop="iphone"  @keyup.enter.native="handleLogin" auto-complete="off">
                 <el-col :span="14">
@@ -40,25 +32,14 @@
                 </div>
               </el-form-item>
             </el-form>
-            <div slot="footer" class="dialog-footer">
-              <el-button @click="dialogFormVisible = false">取消</el-button>
-              <el-button type="primary" @click.native.prevent="handleLogin">登录</el-button>
-            </div>
-          </el-dialog>
-        </div>
-      </el-main>
-      <Footer></Footer>
-    </el-container>
   </div>
 </template>
 
 <script>
-import Footer from "../../components/Fooder";
 import SIdentify from "../../components/indetify";
 
 export default {
   components: {
-    Footer,
     SIdentify
   },
   data() {
@@ -154,21 +135,6 @@ export default {
 
 
 <style scoped>
-#app {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-html,
-body,
-.loginbox,
-.el-container {
-  margin: 0px;
-  padding: 0px;
-  height: 100%;
-}
 .el-main {
   text-align: center;
   line-height: 160px;
@@ -184,13 +150,8 @@ body,
 }
 
 .loginbox {
-  width: 800px;
-  height: 800px;
-  background: url("../../assets/background.jpg");
-  background-size: 100%, 100%;
-  height: 100%;
-  position: fixed;
-  width: 100%;
+  height: 350px;
+  margin-top:60px;
 }
 .el-form {
   margin-left: 150px;

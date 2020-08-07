@@ -1,12 +1,5 @@
 <template>
-  <div id="app" class="registerbox">
-    <el-container style="height=100%;" direction="vertical">
-      <el-header>当猫爱上狗
-                  <el-button type="success" @click="dialogFormVisible = true">注册</el-button>
-      </el-header>
-      <el-main>
-        <div class="registerbody">
-          <el-dialog class="regiDialog" title="注册" :visible.sync="dialogFormVisible">
+  <div class="registerbox">
           <el-form ref="registerFormRef" :model="register" :rules="regFormRules" label-width="80px">
             <el-form-item label="手机号:">
               <el-col :span="13">
@@ -64,7 +57,7 @@
               </el-col>
             </el-form-item>
             <el-form-item label="居住地:">
-              <el-col :span="7">
+              <el-col :span="9">
                 <el-select v-model="register.provice" placeholder="请选择省份">
                   <el-option label="湖北" value="hubei"></el-option>
                   <el-option label="湖南" value="hunan"></el-option>
@@ -74,8 +67,8 @@
                   <el-option label="广西" value="guangxi"></el-option>
                 </el-select>
               </el-col>
-              <el-col class="line" :span="2">-</el-col>
-              <el-col :span="7">
+              <el-col class="line" :span="2">--</el-col>
+              <el-col :span="9">
                 <el-select v-model="register.city" placeholder="请选择城市">
                   <el-option label="武汉" value="wuhan"></el-option>
                   <el-option label="广州" value="广州"></el-option>
@@ -87,24 +80,11 @@
               </el-col>
             </el-form-item>
           </el-form>
-          <div slot="footer" class="dialog-footer">
-              <el-button @click="dialogFormVisible = false">取消</el-button>
-              <el-button type="primary" @click="registering">注册</el-button>
-            </div>
-          </el-dialog>
-        </div>
-      </el-main>
-      <Footer></Footer>
-    </el-container>
   </div>
 </template>
 
 <script>
-import Footer from "../../components/Fooder"
 export default {
-  components:{
-    Footer,
-  },
   data() {
     return {
       register: {
@@ -155,21 +135,6 @@ export default {
 
 
 <style scoped>
-#app {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-html,
-body,
-.loginbox,
-.el-container {
-  margin: 0px;
-  padding: 0px;
-  height: 100%;
-}
 .el-main {
   text-align: center;
   line-height: 160px;
@@ -186,13 +151,8 @@ background-color: #FFECCB;
 }
 
 .registerbox{
-  width: 800px;
-  height: 800px;
-  background: url("../../assets/background.jpg");
-  background-size: 100%,100%;
-  height: 100%;
-  position: fixed;
-  width: 100%
+  height: 470px;
+  margin-top:55px;
 }
 .el-form {
   margin-left: 150px;
@@ -204,5 +164,8 @@ background-color: #FFECCB;
 }
 .regiDialog{
   font-size: 20px;
+}
+.line{
+  text-align: center;
 }
 </style>
