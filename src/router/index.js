@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Layout from "@/views/layout/App.vue";
@@ -36,3 +37,9 @@ const router = new VueRouter({
 });
 
 export default router;
+=======
+<template>
+    <h1></h1>
+</template>
+
+>>>>>>> origin/master

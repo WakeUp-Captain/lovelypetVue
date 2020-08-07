@@ -4,7 +4,22 @@
 	</div>
 </template>
 
+<<<<<<< HEAD
 <!-- 注意这里为共通样式，不能加scoped -->
+=======
+<script>
+import HelloWorld from './components/HelloWorld.vue'
+
+export default {
+  name: 'App',
+  components: {
+    HelloWorld
+  }
+}
+</script>
+
+
+>>>>>>> origin/master
 <style>
 	/*这里的内容，就是静态工程中的 reset.css*/
 	html,body,div,span,h1,h2,h3,h4,h5,h6,ul,ol,li,p {
