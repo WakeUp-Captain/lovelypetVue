@@ -9,8 +9,9 @@ import axios from 'axios';
 
 Vue.config.productionTip = false
 Vue.use(elementUi)
-Vue.prototype.$http = axios
-axios.defaults.baseURL = 'houtai'
+Vue.prototype.$axios = axios
+axios.defaults.baseURL = "http://localhost:8080/";
+// axios.defaults.baseURL = 'houtai'
 
 new Vue({
   router,

@@ -16,6 +16,7 @@ import rechargePage from "../views/pay/rechargePage";
 import scanLog from "../views/star/scanLog";
 import releasedGoods from "../views/goods/releasedGoods";
 import offShelfGoods from "../views/goods/offShelfGoods";
+import goodsList from "../views/goods/goodsList";
 
 Vue.use(VueRouter);
 
@@ -98,6 +99,10 @@ const routes = [
     {
         path: "/releasedGoods",
         component: releasedGoods
+    },
+    {
+        path: "/goodsList",
+        component: goodsList
     }
 ];
 
