@@ -3,9 +3,9 @@ import VueRouter from "vue-router";
 import Layout from "@/views/layout/App.vue";
 import Login from "../views/login/tologinPage.vue";
 import Register from "../views/register/toregisterPage.vue";
-import addGoods from "../views/goods/addGoods.vue";
-import detailGoods from "../views/goods/detailGoods.vue";
-import modifyGoods from "../views/goods/modifyGoods.vue";
+import addGoods from "../views/goods/addGoods";
+import detailGoods from "../views/goods/detailGoods";
+import modifyGoods from "../views/goods/modifyGoods";
 import boughtOrder from "../views/order/boughtOrder";
 import saledOrder from "../views/order/saledOrder";
 import payment from "../views/pay/payment";
@@ -16,6 +16,7 @@ import rechargePage from "../views/pay/rechargePage";
 import scanLog from "../views/star/scanLog";
 import releasedGoods from "../views/goods/releasedGoods";
 import offShelfGoods from "../views/goods/offShelfGoods";
+
 
 Vue.use(VueRouter);
 
