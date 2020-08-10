@@ -12,6 +12,9 @@
         >
             <el-menu-item :index="toHome">首页</el-menu-item>
             <el-menu-item @click="toLogin = true">登录</el-menu-item>
+            <el-menu-item>
+                <router-link to="goodsList">测试</router-link>
+            </el-menu-item>
             <el-dialog title="登录" :visible.sync="toLogin" width="600px" :center="true">
                 <LoginForm/>
                 <div slot="footer" class="dialog-footer">
