@@ -23,14 +23,14 @@
     b {
       font-weight: 700;
     }
-    // .github {
-    //   color: #444;
-    //   font-size: 20px;
-    //   margin-left: 8px;
-    //   &:hover {
-    //     color: #8bc34a;
-    //   }
-    // }
+    .github {
+      color: #444;
+      font-size: 20px;
+      margin-left: 8px;
+      &:hover {
+        color: #8bc34a;
+      }
+    }
   }
 }
 </style>
