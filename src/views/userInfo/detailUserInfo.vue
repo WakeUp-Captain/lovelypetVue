@@ -15,7 +15,8 @@
           <el-tree :data="data" :props="defaultProps" @node-click="handleNodeClick"></el-tree>
         </div>
         <div class="btn">
-            <el-button type="primary" icon="el-icon-edit" @click="tomodifyUserInfo">修改信息</el-button>
+          <el-button type="primary" @click="tocharge">充值</el-button>
+          <el-button type="primary" icon="el-icon-edit" @click="tomodifyUserInfo">修改信息</el-button>
         </div>
       </el-main>
       <FOOTBAR></FOOTBAR>
@@ -28,7 +29,7 @@ import TOPBAR from "../layout/Topbar";
 import FOOTBAR from "../layout/Footer";
 
 export default {
-    name:"detailUserInfo",
+  name: "detailUserInfo",
   components: {
     TOPBAR,
     FOOTBAR
@@ -88,7 +89,7 @@ export default {
           label: "余额",
           children: [
             {
-              label: "balance"
+              label: 'balance'
             }
           ]
         }
@@ -103,9 +104,12 @@ export default {
     handleNodeClick(data) {
       console.log(data);
     },
-    tomodifyUserInfo(){
-        this.$router.push({path:"/modifyUserInfo"});
-    }
+    tomodifyUserInfo() {
+      this.$router.push({ path: "/modifyUserInfo" });
+    },
+    tocharge() {
+      this.$router.push({ path: "/rechargePage" });
+    },
   }
 };
 </script>
@@ -131,8 +135,8 @@ body,
   line-height: 160px;
 }
 
-.el-tree{
-    height: 400px;
+.el-tree {
+  height: 400px;
 }
 .el-tree-node__label {
   width: auto;
@@ -143,15 +147,13 @@ body,
   line-height: 30px;
   letter-spacing: 1px;
   text-align: center;
-  
 }
 
-.el-tree-node__content{
-    background-color: #ffff;
+.el-tree-node__content {
+  background-color: #ffff;
 }
 
 .el-tree-node__children {
   text-align: center;
 }
-
 </style>
