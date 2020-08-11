@@ -33,10 +33,10 @@
       router
     >
       <el-menu-item index="/home">首页</el-menu-item>
-      <el-submenu index="4">
+      <el-submenu index="/order">
         <template slot="title">我的宝贝</template>
-        <el-menu-item index="4-1">已买的宝贝</el-menu-item>
-        <el-menu-item index="4-2">已卖出的宝贝</el-menu-item>
+        <el-menu-item index="/order/boughtOrder">已买的宝贝</el-menu-item>
+        <el-menu-item index="/order/soldOrder">已卖出的宝贝</el-menu-item>
       </el-submenu>
       <el-menu-item index="5">收藏夹</el-menu-item>
       <el-submenu index="6">

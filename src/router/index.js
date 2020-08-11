@@ -5,6 +5,7 @@ import Login from "../views/login/tologinPage.vue";
 import Register from "../views/register/toregisterPage.vue";
 // import PetsDetails from "@/views/pets/PetsDetails.vue"
 import PetsManage from "./petsManage"
+import OrderManage from "./orderManage";
 Vue.use(VueRouter);
 
 const routes = [
@@ -28,6 +29,7 @@ const routes = [
     ]
   },
   PetsManage,
+  OrderManage,
   {
     path:'/login',
     component:Login,

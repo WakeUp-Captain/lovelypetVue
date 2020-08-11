@@ -7,6 +7,7 @@ import axios from 'axios';
 import store from "./store";
 import "@/utils/v-auth.js";
 import Config from "@/config/app";
+import  qs from 'qs'
 
 
 
@@ -15,6 +16,7 @@ Vue.prototype.GlobalCfg = Config;
 Vue.use(elementUi)
 Vue.prototype.$http = axios
 axios.defaults.baseURL = 'houtai'
+Vue.prototype.$qs = qs
 
 new Vue({
   router,
