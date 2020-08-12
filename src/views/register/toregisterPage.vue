@@ -124,7 +124,7 @@ export default {
     },
     registering() {
      alert("注册成功");
-     this.$router.push({path:'/login'});
+     this.$router.push({path:'/home'});
     },
     resetInfo(){
       this.$refs.registerFormRef.resetFields();
