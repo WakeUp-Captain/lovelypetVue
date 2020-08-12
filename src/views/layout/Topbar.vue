@@ -79,7 +79,14 @@ export default {
       toLogin: false,
       toRegist: false,
     };
-  }
+  },
+  methods: {
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
+    },
+  },
+  computed: mapState(["system"]),
+  components: { LoginForm,RegistForm },
 }
 </script>
 <style scoped lang="scss">

@@ -1,8 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Layout from "@/views/layout/App.vue";
-import Login from "../views/login/tologinPage.vue";
-import Register from "../views/register/toregisterPage.vue";
+// import Login from "../views/login/tologinPage.vue";
+// import Register from "../views/register/toregisterPage.vue";
 // import PetsDetails from "@/views/pets/PetsDetails.vue"
 import PetsManage from "./petsManage"
 import OrderManage from "./orderManage";
@@ -32,22 +32,22 @@ const routes = [
   PetsManage,
   OrderManage,
   UserManage,
-  {
-    path: "/scanLog",
-    component: scanLog
-  },
-    {
-        path: "/offShelfGoods",
-        component: offShelfGoods
-    },
-    {
-        path: "/releasedGoods",
-        component: releasedGoods
-    },
-    {
-        path: "/goodsList",
-        component: goodsList
-    }
+  // {
+  //   path: "/scanLog",
+  //   component: scanLog
+  // },
+  //   {
+  //       path: "/offShelfGoods",
+  //       component: offShelfGoods
+  //   },
+  //   {
+  //       path: "/releasedGoods",
+  //       component: releasedGoods
+  //   },
+  //   {
+  //       path: "/goodsList",
+  //       component: goodsList
+  //   }
 ];
 
 const originalPush = VueRouter.prototype.push;
