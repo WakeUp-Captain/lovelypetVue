@@ -78,6 +78,7 @@ const routes = [
         component: myStar
     },
     {
+        name: 'detailUserInfo',
         path: "/detailUserInfo",
         component: detailUserInfo
     },
@@ -86,6 +87,7 @@ const routes = [
         component: modifyUserInfo
     },
     {
+        name: 'rechargePage',
         path: "/rechargePage",
         component: rechargePage
     },
