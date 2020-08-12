@@ -23,7 +23,7 @@ const routes = [
         path: "home",
         name: "Home",
         meta: {
-          title: "首页"
+            title: "当猫爱上狗"
         },
         component: resolve => require(["@/views/home/Index.vue"], resolve)
       },
@@ -33,22 +33,30 @@ const routes = [
   OrderManage,
   UserManage,
   {
-    path:'/login',
-    component:Login,
-},
-{
-    path:'/register',
-    component:Register,
-},
+    path: "/scanLog",
+    component: scanLog
+  },
+    {
+        path: "/offShelfGoods",
+        component: offShelfGoods
+    },
+    {
+        path: "/releasedGoods",
+        component: releasedGoods
+    },
+    {
+        path: "/goodsList",
+        component: goodsList
+    }
 ];
 
 const originalPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function push(location) {
-  return originalPush.call(this, location).catch(err => err);
+    return originalPush.call(this, location).catch(err => err);
 };
 
 const router = new VueRouter({
-  routes
+    routes
 });
 
 export default router;
