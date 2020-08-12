@@ -1,15 +1,156 @@
 <template>
-    <div>
-        <p>修改用户信息</p>
-    </div>
+  <div id="modifyUser">
+    <el-container style="height=100%;" direction="vertical">
+      <TOPBAR></TOPBAR>
+      <el-main>
+        <div class="headInfo">
+          <el-divider content-position="center">
+            <div style="font-size:25px">
+              修改个人信息
+              <i class="el-icon-user-solid"></i>
+            </div>
+          </el-divider>
+        </div>
+        <div>
+          <el-form
+            ref="modifyUserInfo"
+            :model="modifyUserInfo"
+            :rules="modifyFormRules"
+            label-width="80px"
+          >
+            <el-form-item label="手机号:" prop="telenum">
+              <el-col :span="13">
+                <el-input v-model="modifyUserInfo.telenum" placeholder="请输入手机号码"></el-input>
+              </el-col>
+            </el-form-item>
+            <el-form-item label="密码:" prop="password">
+              <el-col :span="13">
+                <el-input v-model="modifyUserInfo.password" placeholder="请输入8-16位密码"></el-input>
+              </el-col>
+            </el-form-item>
+            <el-form-item label="确认密码:" prop="confirm">
+              <el-col :span="13">
+                <el-input v-model="modifyUserInfo.confirm" placeholder="请再次输入密码"></el-input>
+              </el-col>
+            </el-form-item>
+            <el-form-item label="昵称:" prop="nickname">
+              <el-col :span="13">
+                <el-input v-model="modifyUserInfo.nickname" placeholder="请输入昵称"></el-input>
+              </el-col>
+            </el-form-item>
+            <el-form-item label="头像:" prop="headicon">
+              <el-col :span="10">
+                <el-upload
+                  class="avatar-uploader"
+                  action
+                  :show-file-list="false"
+                  :auto-upload="false"
+                  :on-change="changeFile"
+                >
+                  <img v-if="modifyUserInfo.headicon!=''" :src="modifyUserInfo.headicon" class="avatar" />
+                  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                  <el-button slot="trigger" size="small" type="primary">点击上传</el-button>
+                </el-upload>
+              </el-col>
+            </el-form-item>
+            <el-form-item label="性别:" prop="sex">
+              <el-col :span="9">
+                <el-radio-group v-model="modifyUserInfo.sex">
+                  <el-radio label="男">男</el-radio>
+                  <el-radio label="女">女</el-radio>
+                </el-radio-group>
+              </el-col>
+            </el-form-item>
+            <el-form-item label="生日" prop="birthday">
+              <el-col :span="13">
+                <el-input v-model="modifyUserInfo.birthday" placeholder="请输入出生日期"></el-input>
+              </el-col>
+            </el-form-item>
+            <el-form-item label="居住地:" prop="address">
+              <el-col :span="13">
+                <el-input v-model="modifyUserInfo.address" placeholder="请输入居住地"></el-input>
+              </el-col>
+            </el-form-item>
+            <el-form-item>
+              <el-col :span="5">
+                <el-button round @click="resetUserInfo">重置</el-button>
+              </el-col>
+              <el-col :span="5">
+                <el-button type="success" icon="el-icon-check" round @click="confirmUserInfo">确认修改</el-button>
+              </el-col>
+            </el-form-item>
+          </el-form>
+        </div>
+      </el-main>
+      <FOOTBAR></FOOTBAR>
+    </el-container>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "modifyUserInfo"
+import TOPBAR from "../layout/Topbar";
+import FOOTBAR from "../layout/Footer";
+export default {
+  name: "modifyUserInfo",
+  components: {
+    TOPBAR,
+    FOOTBAR
+  },
+  data() {
+    return {
+      modifyUserInfo: {
+        telenum: "",
+        password: "",
+        confirm: "",
+        nickname: "",
+        headicon:"",
+        sex: "男",
+        birthday:"",
+        address:"",
+      },
+      modifyFormRules: {},
+    };
+  },
+  methods: {
+    confirmUserInfo() {
+      
+    },
+    resetUserInfo() {
+      this.$refs.modifyUserInfo.resetFields();
+    },
+    changeFile(file) {
+      var This = this;
+      var reader = new FileReader();
+      reader.readAsDataURL(file.raw);
+      reader.onload = function() {
+        This.modifyUserInfo.headicon = this.result;
+      };
     }
+  }
+};
 </script>
 
-<style scoped>
-
+<style>
+#modifyUserInfo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+html,
+body,
+.el-container {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+}
+.el-main {
+  text-align: center;
+  line-height: 160px;
+}
+.el-form {
+  margin-left: 400px;
+  margin-bottom: 120px;
+}
 </style>

@@ -16,46 +16,14 @@
                   ></el-input>
                 </el-col>
               </el-form-item>
-              <el-form-item label="验证码:" prop="verifycode">
-                <el-col :span="14">
-                  <el-input v-model="login.verifycode" placeholder="请输入验证码" class="identifyinput">
-                    <i slot="prefix" class="el-input__icon el-icon-s-check" style="font-size: 22px"></i>
-                  </el-input>
-                </el-col>
-              </el-form-item>
-              <el-form-item>
-                <div class="identifybox">
-                  <div @click="refreshCode">
-                    <s-identify :identifyCode="identifyCode"></s-identify>
-                    <el-button @click="refreshCode" type="text" class="textbtn">看不清，换一张</el-button>
-                  </div>
-                </div>
-              </el-form-item>
             </el-form>
   </div>
 </template>
 
 <script>
-import SIdentify from "../../components/indetify";
 
 export default {
-  components: {
-    SIdentify
-  },
   data() {
-    const validateVerifycode = (rule, value, callback) => {
-      let newVal = value.toLowerCase();
-      let identifyStr = this.identifyCode.toLowerCase();
-      if (newVal === "") {
-        callback(new Error("请输入验证码"));
-      } else if (newVal !== identifyStr) {
-        console.log("validateVerifycode:", value);
-        callback(new Error("验证码不正确!"));
-      } else {
-        callback();
-      }
-    };
-
     return {
       loginFormRules: {
         iphone: [
@@ -65,57 +33,26 @@ export default {
           { required: true, message: "请输入密码", trigger: "blur" },
           { min: 8, max: 16, message: "长度在8至16个字符", trigger: "blur" }
         ],
-        verifycode: [
-          { required: true, trigger: "blur", validator: validateVerifycode }
-        ]
       },
       login: {
         iphone: "",
         password: "",
         verifycode: "",
       },
-      identifyCodes: "1234567890ABCDEFGHIGKLMNoPQRSTUVWXYZ",
-      identifyCode: "",
       dialogFormVisible: false
     };
   },
-  created() {},
-  mounted() {
-    // 验证码初始化
-    this.identifyCode = "";
-    this.makeCode(this.identifyCodes, 4);
-  },
-  computed: {},
-  props: [],
   methods: {
     // 点击登入按钮
-    handleLogin() {
-      this.$refs.loginFormRef.validate(valid => {
-        if (valid) {
-          this.$router.push("/");
-        } else {
-          this.$router.push("/login");
-        }
-      });
-    },
-    // 生成随机数
-    randomNum(min, max) {
-      return Math.floor(Math.random() * (max - min) + min);
-    },
-    // 切换验证码
-    refreshCode() {
-      this.identifyCode = "";
-      this.makeCode(this.identifyCodes, 4);
-    },
-    // 生成四位随机验证码
-    makeCode(o, l) {
-      for (let i = 0; i < l; i++) {
-        this.identifyCode += this.identifyCodes[
-          this.randomNum(0, this.identifyCodes.length)
-        ];
-      }
-      console.log(this.identifyCode);
-    },
+    // handleLogin() {
+    //   this.$refs.loginFormRef.validate(valid => {
+    //     if (valid) {
+    //       this.$router.push("/");
+    //     } else {
+    //       this.$router.push("/login");
+    //     }
+    //   });
+    // },
     applyFor() {
       this.dialogVisible = true;
     },
@@ -163,10 +100,5 @@ export default {
 }
 .loginDialog {
   font-size: 20px;
-}
-.identifybox{
-  display: flex;
-  justify-content: space-between;
-  margin-top:7px;
 }
 </style>
