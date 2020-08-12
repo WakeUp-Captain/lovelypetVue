@@ -18,44 +18,42 @@
             :rules="modifyFormRules"
             label-width="80px"
           >
-            <el-form-item label="手机号:">
+            <el-form-item label="手机号:" prop="telenum">
               <el-col :span="13">
-                <el-input v-model="modifyUserInfo.iphone" placeholder="请输入手机号码"></el-input>
+                <el-input v-model="modifyUserInfo.telenum" placeholder="请输入手机号码"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="密码:">
+            <el-form-item label="密码:" prop="password">
               <el-col :span="13">
                 <el-input v-model="modifyUserInfo.password" placeholder="请输入8-16位密码"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="确认密码:">
+            <el-form-item label="确认密码:" prop="confirm">
               <el-col :span="13">
                 <el-input v-model="modifyUserInfo.confirm" placeholder="请再次输入密码"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="昵称:">
+            <el-form-item label="昵称:" prop="nickname">
               <el-col :span="13">
                 <el-input v-model="modifyUserInfo.nickname" placeholder="请输入昵称"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="头像:">
+            <el-form-item label="头像:" prop="headicon">
               <el-col :span="10">
                 <el-upload
-                  class="upload-demo"
-                  action="https://jsonplaceholder.typicode.com/posts/"
-                  :on-preview="handlePreview"
-                  :on-remove="handleRemove"
-                  :before-remove="beforeRemove"
-                  multiple
-                  :limit="3"
-                  :on-exceed="handleExceed"
-                  :file-list="modifyUserInfo.fileList"
+                  class="avatar-uploader"
+                  action
+                  :show-file-list="false"
+                  :auto-upload="false"
+                  :on-change="changeFile"
                 >
-                  <el-button size="small" type="primary">点击上传</el-button>
+                  <img v-if="modifyUserInfo.headicon!=''" :src="modifyUserInfo.headicon" class="avatar" />
+                  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                  <el-button slot="trigger" size="small" type="primary">点击上传</el-button>
                 </el-upload>
               </el-col>
             </el-form-item>
-            <el-form-item label="性别:">
+            <el-form-item label="性别:" prop="sex">
               <el-col :span="9">
                 <el-radio-group v-model="modifyUserInfo.sex">
                   <el-radio label="男">男</el-radio>
@@ -63,37 +61,14 @@
                 </el-radio-group>
               </el-col>
             </el-form-item>
-            <el-form-item label="生日">
+            <el-form-item label="生日" prop="birthday">
               <el-col :span="13">
-                <el-date-picker
-                  type="date"
-                  placeholder="选择日期"
-                  v-model="modifyUserInfo.date1"
-                  style="width: 100%;"
-                ></el-date-picker>
+                <el-input v-model="modifyUserInfo.birthday" placeholder="请输入出生日期"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="居住地:">
-              <el-col :span="5">
-                <el-select v-model="modifyUserInfo.provice" placeholder="请选择省份">
-                  <el-option label="湖北" value="hubei"></el-option>
-                  <el-option label="湖南" value="hunan"></el-option>
-                  <el-option label="河北" value="hebei"></el-option>
-                  <el-option label="河南" value="henan"></el-option>
-                  <el-option label="广东" value="guangdong"></el-option>
-                  <el-option label="广西" value="guangxi"></el-option>
-                </el-select>
-              </el-col>
-              <el-col class="line" :span="1">--</el-col>
-              <el-col :span="5">
-                <el-select v-model="modifyUserInfo.city" placeholder="请选择城市">
-                  <el-option label="武汉" value="wuhan"></el-option>
-                  <el-option label="广州" value="广州"></el-option>
-                  <el-option label="深圳" value="shenzhen"></el-option>
-                  <el-option label="桂林" value="guilin"></el-option>
-                  <el-option label="石家庄" value="shijiazhaung"></el-option>
-                  <el-option label="洛阳" value="luoyang"></el-option>
-                </el-select>
+            <el-form-item label="居住地:" prop="address">
+              <el-col :span="13">
+                <el-input v-model="modifyUserInfo.address" placeholder="请输入居住地"></el-input>
               </el-col>
             </el-form-item>
             <el-form-item>
@@ -124,41 +99,32 @@ export default {
   data() {
     return {
       modifyUserInfo: {
-        iphone: "",
+        telenum: "",
         password: "",
         confirm: "",
         nickname: "",
-        fileList: [],
+        headicon:"",
         sex: "男",
-        date1: "",
-        provice: "",
-        city: ""
+        birthday:"",
+        address:"",
       },
       modifyFormRules: {},
-      dialogTableVisible: false,
-      dialogFormVisible: false
     };
   },
   methods: {
-    handleRemove(file, fileList) {
-      console.log(file, fileList);
+    confirmUserInfo() {
+      
     },
-    handlePreview(file) {
-      console.log(file);
-    },
-    handleExceed(files, fileList) {
-      this.$message.warning(
-        `当前限制选择 3 个文件，本次选择了 ${
-          files.length
-        } 个文件，共选择了 ${files.length + fileList.length} 个文件`
-      );
-    },
-    beforeRemove(file, fileList) {// eslint-disable-line no-unused-vars
-      return this.$confirm(`确定移除 ${file.name}？`);
-    },
-    confirmUserInfo() {},
     resetUserInfo() {
       this.$refs.modifyUserInfo.resetFields();
+    },
+    changeFile(file) {
+      var This = this;
+      var reader = new FileReader();
+      reader.readAsDataURL(file.raw);
+      reader.onload = function() {
+        This.modifyUserInfo.headicon = this.result;
+      };
     }
   }
 };
