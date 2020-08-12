@@ -27,6 +27,7 @@
 <script>
 import PetsList from "../pets/PetsList";
 import { soldOrder } from "@/api/orderManage/soldOrder";
+import { deleteSoldOrder } from "@/api/orderManage/soldOrder"
 export default {
   name: "BoughtOrder",
   data() {
@@ -59,6 +60,24 @@ export default {
     goHome() {
       this.$router.push('/');
       this.dialogVisible=false;
+    },
+    deleteRecord(item) {
+      console.log("这里是父组件的删除函数");
+      let order={orderid:item.orderid}
+      console.log(this.$qs.parse(order));
+      deleteSoldOrder(this.$qs.parse(order))
+      .then((r) => {
+          
+        if (r.success == true) {
+          console.log("success");
+          this.$router.go(0);
+        } else {
+          console.log("fail");
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
     },
   },
 };

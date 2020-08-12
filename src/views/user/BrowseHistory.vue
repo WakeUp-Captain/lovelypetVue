@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <div class="cur-location">
+    <div>
+        <div class="cur-location">
       <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item :to="{ path: '/' }">我的宝贝</el-breadcrumb-item>
-        <el-breadcrumb-item>已买的宝贝</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/' }">个人中心</el-breadcrumb-item>
+        <el-breadcrumb-item>浏览记录</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="show" v-if="refresh">
@@ -14,7 +14,7 @@
       :visible.sync="dialogVisible"
       width="30%"
     >
-      <span>抱歉！没有找到相关信息哦!去首页看看吧！</span>
+      <span>抱歉！没有找到相关记录!去首页看看吧！</span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="goHome()"
@@ -22,24 +22,24 @@
         >
       </span>
     </el-dialog>
-  </div>
+    </div>
 </template>
 <script>
 import PetsList from "../pets/PetsList";
-import { boughtOrder } from "@/api/orderManage/boughtOrder";
-import { deleteBoughtOrder } from "@/api/orderManage/boughtOrder";
+import {historyList} from "@/api/userManage/history"
+import { deletehistory } from "@/api/userManage/history"
 export default {
-  name: "BoughtOrder",
+    name: "BrowseHistory",
   data() {
     return {
       totalPets: [],
       refresh: false,
       dialogVisible: false,
-      user:{nickname:'admin'}
+      user:{telenum:'admin'}
     };
   },
   created() {
-    boughtOrder(this.$qs.parse(this.user))
+    historyList(this.$qs.parse(this.user))
       .then((r) => {
           
         if (r.data == "") {
@@ -63,9 +63,9 @@ export default {
     },
     deleteRecord(item) {
       console.log("这里是父组件的删除函数");
-      let order={orderid:item.orderid}
-      console.log(this.$qs.parse(order));
-      deleteBoughtOrder(this.$qs.parse(order))
+      let history={recordid:item.recordid}
+      console.log(this.$qs.parse(history));
+      deletehistory(this.$qs.parse(history))
       .then((r) => {
           
         if (r.success == true) {
@@ -80,7 +80,8 @@ export default {
       });
     },
   },
-};
+    
+}
 </script>
 <style scoped>
 .show {

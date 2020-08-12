@@ -38,12 +38,13 @@
         <el-menu-item index="/order/boughtOrder">已买的宝贝</el-menu-item>
         <el-menu-item index="/order/soldOrder">已卖出的宝贝</el-menu-item>
       </el-submenu>
-      <el-menu-item index="5">收藏夹</el-menu-item>
-      <el-submenu index="6">
+      <el-menu-item index="/user/star">收藏夹</el-menu-item>
+      <el-submenu index="/user">
         <template slot="title">个人中心</template>
         <el-menu-item index="6-1">个人资料</el-menu-item>
         <el-menu-item index="6-2">地址管理</el-menu-item>
         <el-menu-item index="6-3">消息</el-menu-item>
+        <el-menu-item index="/user/history">浏览历史</el-menu-item>
       </el-submenu>
     </el-menu>
     </div>

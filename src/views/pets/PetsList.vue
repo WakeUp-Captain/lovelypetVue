@@ -2,7 +2,8 @@
   <div class="showCard" >
     <el-row v-for="(rows, index) in branchData" :key="index" class="card-row">
       <el-col v-for="(item, index) in rows" :key="index" class="card-col">
-        <div class="petcard" @click="toDetails(item.goodnum)">
+        <div class="petcard" >
+          <div @click="toDetails(item.goodnum)">
           <img
             src="../../assets/images/dog1.jpg"
             width="100%"
@@ -24,6 +25,13 @@
               <span>描述：{{ item.pet.description }}</span>
             </div>
           </div>
+          </div>
+            <div class="delete">
+              <div class="deleteicon">
+              <i class="el-icon-delete" @click="open(item)"></i>
+              </div>
+            </div>
+          
         </div>
       </el-col>
     </el-row>
@@ -102,6 +110,24 @@ export default {
       this.pageSize = size;
       this.getPetsCard();
     },
+    open(item){
+      this.$confirm('此操作将永久删除该记录, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(action => {
+          if (action == 'confirm') {
+            console.log("confirm");
+            this.$parent.deleteRecord(item);
+            // this.$emit('deleteRecord',item);
+          }
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
+        });
+    }
   },
 };
 </script>
@@ -145,8 +171,21 @@ export default {
   height: 40px;
 }
 .details {
-  height: 50px;
+  height: 40px;
   display: flex;
   align-items: center;
+}
+.delete{
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding-left: 260px;
+  cursor: default;
+}
+/* i{
+  height: 30px;
+} */
+i:hover{
+  color: blue;
 }
 </style>
