@@ -28,7 +28,7 @@
                   :auto-upload="false"
                   :on-change="changeFile"
                 >
-                  <img v-if="modifyGoodsForm.photo!=''" :src="modifyGoodsForm.photo" class="avatar" />
+                  <img width="100px" height="100px" v-if="modifyGoodsForm.photo!=''" :src="modifyGoodsForm.photo" class="avatar" />
                   <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                   <el-button slot="trigger" size="small" type="primary">点击上传</el-button>
                 </el-upload>

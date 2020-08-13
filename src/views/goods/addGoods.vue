@@ -77,14 +77,14 @@
                 <el-form-item label="宝贝分类:">
                     <el-col :span="5">
                         <el-select v-model="addGoodsForm.summaryClassifyname" placeholder="请选择分类">
-                            <el-option label="猫" value="mao"></el-option>
-                            <el-option label="狗" value="gou"></el-option>
+                            <el-option label="猫" value="猫咪"></el-option>
+                            <el-option label="狗" value="狗狗"></el-option>
                         </el-select>
                     </el-col>
                     <el-col class="line" :span="1"></el-col>
                     <el-col :span="6">
                         <el-select v-model="addGoodsForm.detailClassifyname" placeholder="请选择品种">
-                            <el-option label="吉娃娃" value="jiwawa"></el-option>
+                            <el-option label="吉娃娃" value="吉娃娃"></el-option>
                             <el-option label="泰迪" value="泰迪"></el-option>
                         </el-select>
                     </el-col>

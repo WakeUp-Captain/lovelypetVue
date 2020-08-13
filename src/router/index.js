@@ -4,6 +4,7 @@ import Layout from "@/views/layout/App.vue";
 // import Login from "../views/login/tologinPage.vue";
 // import Register from "../views/register/toregisterPage.vue";
 // import PetsDetails from "@/views/pets/PetsDetails.vue"
+import payment from "../views/pay/payment";
 import PetsManage from "./petsManage"
 import OrderManage from "./orderManage";
 import UserManage from "./userManange";
@@ -32,10 +33,10 @@ const routes = [
   PetsManage,
   OrderManage,
   UserManage,
-  // {
-  //   path: "/scanLog",
-  //   component: scanLog
-  // },
+  {
+    path: "/payment",
+    component: payment
+  },
   //   {
   //       path: "/offShelfGoods",
   //       component: offShelfGoods

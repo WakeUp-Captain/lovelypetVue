@@ -8,7 +8,7 @@
 
       <span v-if="user != null">
         {{user.nickname}}
-        <img width="30px" height="30px" :src="user.headicon"/>
+        <img width="30px" height="30px" :src="this.user.headicon"/>
       </span>
 
       <span  v-if="user == null">

@@ -62,9 +62,9 @@
             class="card-row"
           >
             <el-col v-for="(item, index) in rows" :key="index" class="card-col">
-              <div class="petcard" @click="toDetails(item.good_num)">
+              <div class="petcard" @click="toDetails(item.goodNum)">
                 <img
-                  src="../../assets/images/dog1.jpg"
+                  :src="item.pic1"
                   width="100%"
                   height="200px"
                   align="middle"
@@ -72,8 +72,8 @@
                 <div>
                   <div class="details">
                     <span
-                      >#{{ item.summary_classifyname }}#{{
-                        item.detail_classifyname
+                      >#{{ item.summaryClassifyname }}#{{
+                        item.detailClassifyname
                       }}</span
                     >
                   </div>
@@ -81,7 +81,7 @@
                     <span>价格：{{ item.price }}</span>
                   </div>
                   <div class="details">
-                    <span>描述：{{ item.description }}</span>
+                    <span>描述：{{item.description|ellipsis}}</span>
                   </div>
                 </div>
               </div>
@@ -158,6 +158,15 @@ export default {
         console.log(e);
       });
   },
+  filters: {
+    ellipsis (value) {
+      if (!value) return ''
+      if (value.length > 15) {
+        return value.slice(0,15) + '...'
+      }
+      return value
+    }
+  },
   methods: {
     search() {
       console.log(this.typeValue, this.classValue);
@@ -183,8 +192,10 @@ export default {
       this.branchData = arr;
     },
     toDetails(good_num) {
-      this.$router.push({name:'petsDetails',query:{id:good_num}});
+      this.$router.push({name:'petsDetails',params:{id:good_num}});
+      this.$setSessionStorage("goodnum",good_num);
       // this.$router.push({name:"Home",path:'/home'});
+      // alert(good_num);
       console.log(good_num);
     },
     handleCurrentChange(currentPage) {
