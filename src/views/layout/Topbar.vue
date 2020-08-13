@@ -4,8 +4,8 @@
     <div class="welcome">
       <span>欢迎来到当猫爱上狗！</span>
       <!-- <span> -->
-      <button @click="toLogin = true">登录</button>
-      <el-dialog
+      <button @click="toLogin()">登录</button>
+      <!-- <el-dialog
         title="登录"
         :visible.sync="toLogin"
         width="600px"
@@ -19,7 +19,7 @@
             >登录</el-button
           >
         </div>
-      </el-dialog>
+      </el-dialog> -->
       <button @click="toRegist = true">注册</button>
       <el-dialog
         title="注册"
@@ -57,7 +57,9 @@
         <el-menu-item index="/user/star">收藏夹</el-menu-item>
         <el-submenu index="/user">
           <template slot="title">个人中心</template>
-          <el-menu-item index="6-1">个人资料</el-menu-item>
+          <el-menu-item index="/user/myinfo">个人资料</el-menu-item>
+          <el-menu-item index="/user/rechargePage">充值中心</el-menu-item>
+          <el-menu-item index="/user/addPets">发布宝贝</el-menu-item>
           <el-menu-item index="6-2">地址管理</el-menu-item>
           <el-menu-item index="6-3">消息</el-menu-item>
           <el-menu-item index="/user/history">浏览历史</el-menu-item>
@@ -69,14 +71,14 @@
 
 <script>
 import { mapState } from "vuex";
-import LoginForm from "../login/tologinPage.vue";
+// import LoginForm from "../login/tologinPage.vue";
 import RegistForm from "../register/toregisterPage.vue"
 export default {
   name: "Topbar",
   data() {
     return {
       toHome: "/home",
-      toLogin: false,
+      // toLogin: false,
       toRegist: false,
     };
   },
@@ -84,9 +86,12 @@ export default {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
     },
+    toLogin(){
+      this.$router.push("/user/login")
+    }
   },
   computed: mapState(["system"]),
-  components: { LoginForm,RegistForm },
+  components: { RegistForm },
 }
 </script>
 <style scoped lang="scss">

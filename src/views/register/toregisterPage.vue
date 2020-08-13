@@ -1,5 +1,12 @@
 <template>
-  <div class="registerbox">
+  <div >
+    <el-divider content-position="center">
+            <div style="font-size:25px">
+              注册
+              <i class="el-icon-user"></i>
+            </div>
+          </el-divider>
+          <div class="show">
           <el-form ref="registerFormRef" :model="register" :rules="regFormRules" label-width="80px">
             <el-form-item label="手机号:">
               <el-col :span="13">
@@ -79,7 +86,12 @@
                 </el-select>
               </el-col>
             </el-form-item>
+            <el-form-item>
+    <el-button type="primary" @click="onSubmit">注册</el-button>
+    <span @click="toLogin">已有账号去登录>>></span>
+  </el-form-item>
           </el-form>
+          </div>
   </div>
 </template>
 
@@ -129,6 +141,9 @@ export default {
     resetInfo(){
       this.$refs.registerFormRef.resetFields();
     },
+    toLogin(){
+      this.$router.push("/user/login");
+    },
   }
 };
 </script>
@@ -156,7 +171,7 @@ background-color: #FFECCB;
 }
 .el-form {
   margin-left: 150px;
-  margin-top: -80px;
+  /* margin-top: -80px; */
 }
 .dialog-footer{
   margin-right: 300px;
@@ -165,7 +180,20 @@ background-color: #FFECCB;
 .regiDialog{
   font-size: 20px;
 }
-.line{
+/* .line{
   text-align: center;
+} */
+  .show {
+  margin-top: 40px;
+  padding-left: 350px;
+  padding-right: 150px;
+  height: 100%;
+}
+.el-button{
+  margin-left:160px;
+}
+span{
+  margin-left:90px;
+  cursor: pointer;
 }
 </style>

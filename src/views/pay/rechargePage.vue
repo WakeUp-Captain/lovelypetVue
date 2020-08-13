@@ -1,30 +1,32 @@
 <template>
-  <div id="recharge">
-    <el-container style="height=100%;" direction="vertical">
-      <TOPBAR></TOPBAR>
-      <el-main>
-        <div style="margin-top:100px">
+  <div>
+        <div class="cur-location">
+      <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb-item :to="{ path: '/' }">个人中心</el-breadcrumb-item>
+        <el-breadcrumb-item>充值</el-breadcrumb-item>
+      </el-breadcrumb>
+    </div>
+    <el-divider content-position="center">
+            <div style="font-size:25px">
+              充值
+              <i class="el-icon-money"></i>
+            </div>
+          </el-divider>
+        <div class="show">
           金额：
           <el-input placeholder="请输入充值金额" v-model="balance" clearable></el-input>
-        </div>
-        <div style="margin-top:-50px">
+          <div class="confirm">
             <el-button type="warning" @click="checkChange">确认充值</el-button>
         </div>
-      </el-main>
-      <FOOTBAR></FOOTBAR>
-    </el-container>
+        </div>
+        
+
   </div>
 </template>
 
 <script>
-import TOPBAR from "../layout/Topbar";
-import FOOTBAR from "../layout/Footer";
 export default {
   name: "rechargePage",
-  components: {
-    TOPBAR,
-    FOOTBAR,
-  },
   data() {
     return {
       balance: "",
@@ -40,24 +42,19 @@ export default {
 </script>
 
 <style scoped>
-#recharge {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+.show {
+  margin-top: 40px;
+  padding-left: 40%;
+  /* padding-right: 150px; */
   height: 100%;
 }
-
-html,
-body,
-.el-container {
-  margin: 0px;
-  padding: 0px;
-  height: 100%;
+.confirm{
+  margin-top:20px;
+  padding-left: 90px;
 }
-.el-main {
-  text-align: center;
-  line-height: 160px;
+.cur-location {
+  padding-left: 150px;
+  margin-top: 20px;
 }
 .el-input {
   width: auto;

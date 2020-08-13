@@ -1,17 +1,18 @@
 <template>
-  <div id="addGoods">
-    <el-container style="height=100%;" direction="vertical">
-      <TOPBAR></TOPBAR>
-      <el-main>
-        <div style="margin-bottom:150px">
-          <el-divider content-position="center">
+  <div>
+    <div class="cur-location">
+      <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb-item :to="{ path: '/' }">个人中心</el-breadcrumb-item>
+        <el-breadcrumb-item>发布宝贝</el-breadcrumb-item>
+      </el-breadcrumb>
+    </div>
+    <el-divider content-position="center">
             <div style="font-size:25px">
               发布宝贝
               <i class="el-icon-goods"></i>
             </div>
           </el-divider>
-        </div>
-        <div>
+        <div class="show">
           <el-form
             class="form-wrapper padding"
             ref="addGoodsForm"
@@ -61,27 +62,18 @@
             </el-form-item>
             <el-form-item>
               <el-col :span="11">
-                <el-button type="primary" @click="release">确认修改</el-button>
+                <el-button type="primary" @click="release">确认</el-button>
                 <el-button @click="resetForm">重置</el-button>
               </el-col>
             </el-form-item>
           </el-form>
         </div>
-      </el-main>
-      <FOOTBAR></FOOTBAR>
-    </el-container>
   </div>
 </template>
 
 <script>
-import TOPBAR from "../layout/Topbar";
-import FOOTBAR from "../layout/Footer";
 export default {
-  name: "add",
-  components: {
-    TOPBAR,
-    FOOTBAR
-  },
+  name: "addGoods",
   data() {
     return {
       addGoodsForm: {
@@ -117,22 +109,13 @@ export default {
 </script>
 
 <style>
-#addGoods {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+.show {
+  margin-top: 50px;
+  padding-left: 30%;
   height: 100%;
 }
-html,
-body,
-.el-container {
-  margin: 0px;
-  padding: 0px;
-  height: 100%;
-}
-.el-main {
-  text-align: center;
-  line-height: 160px;
+.cur-location {
+  padding-left: 150px;
+  margin-top: 20px;
 }
 </style>
