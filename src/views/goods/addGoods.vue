@@ -122,8 +122,8 @@
                     summaryClassifyname: "", //分类
                     detailClassifyname: "", //品种
                     price: "", //价格
-                    description: "" ,//描述
-                    owner:this.$getSessionStorage("user").telenum
+                    description: "",//描述
+                    owner: this.$getSessionStorage("user").telenum
                 },
                 addRules: {
                     // 表单验证规则
@@ -155,6 +155,8 @@
                         if (response.data.code == 200) {
                             // 注册成功
                             alert("添加物品成功！！");
+                            this.$router.push({path: '/home'});
+                            this.$router.go(0);
 
                         } else {
                             // 注册失败

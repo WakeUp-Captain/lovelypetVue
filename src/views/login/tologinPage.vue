@@ -104,23 +104,21 @@
                     )
                     .then(response => {
                         let user = response.data.data;
-                      if(response.data.code == 200)
-                      {
-                        // 登录成功
-                        this.$setSessionStorage("user",user[0]);
-                        console.log("1");
-                        alert(user[0].nickname +"   登录成功");
-                        console.log(response.data.data[0]);
-                        console.log("1");
-                        this.$router.push({path: '/home'});
-                        this.$router.go(0);
-                      }
-                      else {
-                        // 登陆失败
-                        alert("账号或密码有误");
+                        if (response.data.code == 200) {
+                            // 登录成功
+                            this.$setSessionStorage("user", user[0]);
+                            console.log("1");
+                            alert(user[0].nickname + "   登录成功");
+                            console.log(response.data.data[0]);
+                            console.log("1");
+                            this.$router.push({path: '/home'});
+                            this.$router.go(0);
+                        } else {
+                            // 登陆失败
+                            alert("账号或密码有误");
 
-                      }
-                      console.log(response)
+                        }
+                        console.log(response)
                     })
                     .catch(error => {
                         console.log(error);

@@ -158,12 +158,11 @@
                         this.$qs.stringify(this.register)
                     )
                     .then(response => {
+                        let user = response.data.data;
                         if (response.data.code == 200) {
                             // 注册成功
+                            this.$setSessionStorage("user", user[0]);
                             this.registering();
-
-
-
                         } else {
                             // 注册失败
                             alert("用户名已被注册，请重新填写");
