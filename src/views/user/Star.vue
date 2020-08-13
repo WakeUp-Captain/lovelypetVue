@@ -82,7 +82,7 @@
       </div>
       <div class="bottom">
         <div class="deleteall">
-          <el-button type="danger" round :disabled="{totalNum}">批量删除</el-button>
+          <el-button type="danger" round >批量删除</el-button>
         </div>
         
         <div class="sum">

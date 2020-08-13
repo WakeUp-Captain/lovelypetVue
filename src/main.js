@@ -17,6 +17,7 @@ import {
   setLocalStorage,
   getLocalStorage,
   removeLocalStorage,
+  sessionStorage,
 } from "./common.js";
 
 
@@ -24,7 +25,7 @@ Vue.config.productionTip = false;
 Vue.prototype.GlobalCfg = Config;
 Vue.use(elementUi)
 Vue.prototype.$http = axios
-axios.defaults.baseURL = 'houtai'
+axios.defaults.baseURL = 'http://localhost:8080/'
 Vue.prototype.$qs = qs
 
 Vue.prototype.$getCurDate = getCurDate;
@@ -34,6 +35,7 @@ Vue.prototype.$removeSessionStorage = removeSessionStorage;
 Vue.prototype.$setLocalStorage = setLocalStorage;
 Vue.prototype.$getLocalStorage = getLocalStorage;
 Vue.prototype.$removeLocalStorage = removeLocalStorage;
+Vue.prototype.$sessionStorage = sessionStorage;
 
 new Vue({
   router,

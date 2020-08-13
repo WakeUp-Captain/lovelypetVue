@@ -2,10 +2,21 @@
   <div class="topbar-menu">
     <!-- <div class="topbar-menu"> -->
     <div class="welcome">
+
       <span>欢迎来到当猫爱上狗！</span>
       <!-- <span> -->
-      <button @click="toLogin = true">登录</button>
-      <el-dialog
+
+      <span v-if="user != null">
+        {{user.nickname}}
+        <img :src="user.headicon"/>
+      </span>
+
+      <span  v-if="user == null">
+        <button  @click="toLogin()">登录</button>
+        <button @click="toRegister()">注册</button>
+      </span>
+
+      <!-- <el-dialog
         title="登录"
         :visible.sync="toLogin"
         width="600px"
@@ -19,24 +30,25 @@
             >登录</el-button
           >
         </div>
-      </el-dialog>
-      <button @click="toRegist = true">注册</button>
-      <el-dialog
-        title="注册"
-        :visible.sync="toRegist"
-        width="600px"
-        :center="true"
-        :modal="false"
-      >
-        <RegistForm />
-        <div slot="footer" class="dialog-footer">
-          <el-button @click="toRegist = false">取消</el-button>
-          <el-button type="primary" @click.native.prevent="handleLogin"
-            >注册</el-button
-          >
-        </div>
-      </el-dialog>
+      </el-dialog> -->
+
+<!--      <el-dialog-->
+<!--        title="注册"-->
+<!--        :visible.sync="toRegist"-->
+<!--        width="600px"-->
+<!--        :center="true"-->
+<!--        :modal="false"-->
+<!--      >-->
+<!--        <RegistForm />-->
+<!--        <div slot="footer" class="dialog-footer">-->
+<!--          <el-button @click="toRegist = false">取消</el-button>-->
+<!--          <el-button type="primary" @click.native.prevent="handleLogin"-->
+<!--            >注册</el-button-->
+<!--          >-->
+<!--        </div>-->
+<!--      </el-dialog>-->
       <!-- </span> -->
+
     </div>
     <div class="menu">
       <el-menu
@@ -57,9 +69,10 @@
         <el-menu-item index="/user/star">收藏夹</el-menu-item>
         <el-submenu index="/user">
           <template slot="title">个人中心</template>
-          <el-menu-item index="6-1">个人资料</el-menu-item>
-          <el-menu-item index="6-2">地址管理</el-menu-item>
-          <el-menu-item index="6-3">消息</el-menu-item>
+          <el-menu-item index="/user/myinfo">个人资料</el-menu-item>
+          <el-menu-item index="/user/rechargePage">充值中心</el-menu-item>
+          <el-menu-item index="/user/addPets">发布宝贝</el-menu-item>
+          <el-menu-item @click="loginOut()">退出登录</el-menu-item>
           <el-menu-item index="/user/history">浏览历史</el-menu-item>
         </el-submenu>
       </el-menu>
@@ -69,17 +82,38 @@
 
 <script>
 import { mapState } from "vuex";
-import LoginForm from "../login/tologinPage.vue";
-import RegistForm from "../register/toregisterPage.vue"
+// import LoginForm from "../login/tologinPage.vue";
+// import RegistForm from "../register/toregisterPage.vue"
 export default {
   name: "Topbar",
   data() {
     return {
       toHome: "/home",
-      toLogin: false,
+      // toLogin: false,
       toRegist: false,
+      user:this.$getSessionStorage("user"),
     };
-  }
+  },
+  methods: {
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    toLogin(){
+      this.$router.push("/user/login")
+    },
+    toRegister() {
+      this.$router.push("/user/register");
+    },
+    // 点击退出登录
+    loginOut(){
+      this.$removeSessionStorage("user");
+      alert("已退出登录！！");
+      this.$router.push("/home");
+      this.$router.go(0);
+    },
+  },
+  computed: mapState(["system"]),
+  // components: { RegistForm },
 }
 </script>
 <style scoped lang="scss">

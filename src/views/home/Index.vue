@@ -103,6 +103,7 @@
         </div>
       </template>
     </div>
+  </div>
 </template>
 
 <script>
@@ -121,6 +122,17 @@ export default {
           label: "猫",
         }],
         classValue: "",
+      typeValue:"",
+      classes: [
+        {
+          value: "taidi",
+          label: "泰迪",
+        },
+        {
+          value: "jiwawa",
+          label: "吉娃娃",
+        },
+      ],
       totalPets:[],
       petsCard: [],
       branchData: [],
@@ -133,32 +145,11 @@ export default {
       this.getRow();
       this.getGoodsList();
   },
-
-  methods: {
-      search() {
-          console.log(this.typeValue, this.classValue);
-      },
-      getRow() {
-          let arr = [];
-          let row = Math.ceil(this.petsCard.length / 4);
-          for (let i = 0; i < row; i++) {
-              arr[i] = [];
-              let modLast = this.petsCard.length % 4 === 0 ? 4 : this.petsCard.length % 4;
-              let lastRow = i === (row - 1) ? modLast : 4;
-              for (let j = 0; j < lastRow; j++) {
-                  arr[i][j] = this.petsCard[4 * i + j];
-              }
-          }
-          this.branchData = arr;
-      },
-      toDetails() {
-          console.log("toDetails");
-      }
-  },
       
   created() {
     petsList()
       .then((r) => {
+        console.log("这里是首页");
         this.totalPets = r;
         this.totalPetsNum = this.totalPets.length;
         this.getPetsCard();
